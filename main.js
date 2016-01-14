@@ -18,7 +18,7 @@ bot.startRTM(function(err,bot,payload) {
     throw new Error('Could not connect to Slack');
   }
 });
-controller.hears(['run'], 'direct_message,direct_mention,mention', function(bot, message) {
+controller.hears(['run'], ['direct_message', 'direct_mention', 'mention', 'ambient'], function(bot, message) {
   logger.info('new webtask requested');
   var matches = message.text.replace(/`/g, "").match(/run:(.*)/i);
   if (!matches) {
